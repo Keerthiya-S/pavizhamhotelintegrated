@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Pavizham Palace</title>
+    <link rel="icon" type="image/png" href="images/pavizham-palace-logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/about.css">
+    <!-- AOS CSS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <!-- ✅ Logo instead of text -->
+            <a class="navbar-brand" href="#">
+                <img src="images/colored-logo.png" alt="pavizham-palace-logo"
+                    class="d-inline-block align-text-top logo-img">
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Nav links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="rooms.html">Rooms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 data-aos="fade-up">About Us</h1>
+            <h2 data-aos="fade-up">Welcome to Pavizham Palace</h2>
+        </div>
+    </section>
+    <!-- About Content -->
+<section class="about-section py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Left Image -->
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="images/about1.jpg" class="img-fluid rounded shadow-lg" alt="Hotel View" data-aos="fade-left">
+      </div>
+
+      <!-- Right Content -->
+      <div class="col-md-6">
+        <h2 class="fw-bold mb-3 text-warning" data-aos="fade-right">Experience Royal Hospitality</h2>
+        <p class="text-muted mb-3" data-aos="fade-right">
+          Nestled in the serene hills of Kerala, Pavizham Palace is a sanctuary of elegance and comfort.
+          With world-class facilities, fine dining, and breathtaking views, we create experiences that
+          blend tradition with modern luxury.
+        </p>
+        <p class="text-muted mb-4" data-aos="fade-right">
+          Whether you’re planning a family vacation, a romantic getaway, or a business retreat,
+          our dedicated team ensures your stay is truly unforgettable.
+        </p>
+        <a href="#facilities" class="btn btn-warning text-white px-4 py-2 rounded-pill shadow" data-aos="fade-right">
+          Explore Rooms
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- milestones -->
+    <section id="milestones" class="py-5 text-center text-white position-relative"
+        style="background: url('images/milestones.jpg') center/cover no-repeat;">
+
+        <!-- Dark overlay -->
+        <div class="overlay" style="position: absolute; top:0; left:0; width:100%; height:100%; 
+       background: rgba(0,0,0,0.6); z-index:1;"></div>
+
+        <div class="container position-relative" style="z-index:2;">
+            <h2 class="fw-bold mb-4" data-aos="zoom-in-right">Our Milestones</h2>
+            <p class="mb-5" data-aos="zoom-in-right">
+                We take pride in offering luxury, comfort, and world-class hospitality.
+                Here’s a glimpse of what makes us special.
+            </p>
+
+            <div class="row g-4" >
+                <div class="col-md-3" data-aos="flip-right">
+                    <div class="p-4 border rounded">
+                        <i class="bi bi-cup-straw fs-1 mb-3"></i>
+                        <h3 class="counter" data-target="231">0</h3>
+                        <p>Cocktails/day</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="flip-right">
+                    <div class="p-4 border rounded">
+                        <i class="bi bi-water fs-1 mb-3"></i>
+                        <h3 class="counter" data-target="3">0</h3>
+                        <p>Pools</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="flip-left">
+                    <div class="p-4 border rounded">
+                        <i class="bi bi-building fs-1 mb-3"></i>
+                        <h3 class="counter" data-target="79">0</h3>
+                        <p>Rooms</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="flip-left">
+                    <div class="p-4 border rounded">
+                        <i class="bi bi-house-door fs-1 mb-3"></i>
+                        <h3 class="counter" data-target="25">0</h3>
+                        <p>Apartments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- People Says Section -->
+<section class="py-5 bg-light testimonial">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-5" data-aos="fade-up">What Our Guests Say</h2>
+
+    <!-- Carousel -->
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+      
+      
+
+      <div class="carousel-inner">
+
+        <!-- Item 1 -->
+        <div class="carousel-item active">
+          <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+              <img src="images/user2.jpg" data-aos="zoom-in" class="rounded-circle mb-3 shadow testimonial-img" width="90" height="90" alt="Jean Smith">
+              <p class="fst-italic" data-aos="zoom-in" >
+                “Staying at Pavizham Palace was a memorable experience. The rooms were spacious, and the hospitality
+                was truly Kerala-style — warm and welcoming.”
+              </p>
+              <h6 class="fw-bold" data-aos="zoom-in" >— Jean Smith</h6>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+              <img src="images/user3.jpg" data-aos="zoom-in" class="rounded-circle mb-3 shadow testimonial-img" width="90" height="90" alt="John Doe">
+              <p class="fst-italic" data-aos="zoom-in">
+                “A perfect blend of comfort and tradition. Pavizham Palace gave us the true essence of Kerala’s hospitality.”
+              </p>
+              <h6 class="fw-bold" data-aos="zoom-in">— John Doe</h6>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+              <img src="images/user1.jpg" data-aos="zoom-in" class="rounded-circle mb-3 shadow testimonial-img" width="90" height="90" alt="Maria George">
+              <p class="fst-italic" data-aos="zoom-in">
+                “The stay was peaceful and relaxing. I highly recommend Pavizham Palace for anyone visiting Kerala.”
+              </p>
+              <h6 class="fw-bold" data-aos="zoom-in">— Maria George</h6>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle p-3"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle p-3"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+
+
+    
+
+    <!-- Our Values -->
+<section class="py-5 bg-light">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-4" data-aos="fade-up" style="color: #926268;">Why Choose Us</h2>
+    <div class="row g-4">
+      
+      <div class="col-md-4">
+        <div class="value-card shadow rounded h-100" 
+             style="background-image: url('images/why1.jpg');" data-aos="zoom-in-left">
+          <div class="overlay"></div>
+          <div class="content">
+            <i class="bi bi-star-fill fs-1 text-warning mb-3"></i>
+            <h5 class="text-white">Luxury & Comfort</h5>
+            <p class="text-light">Elegant rooms and modern amenities designed for your relaxation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="value-card shadow rounded h-100" 
+             style="background-image: url('images/why2.jpg');" data-aos="zoom-in">
+          <div class="overlay"></div>
+          <div class="content">
+            <i class="bi bi-heart-fill fs-1 text-danger mb-3"></i>
+            <h5 class="text-white">Personalized Service</h5>
+            <p class="text-light">Our friendly staff ensures every guest feels truly special.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="value-card shadow rounded h-100" 
+             style="background-image: url('images/why3.jpg');" data-aos="zoom-in-right">
+          <div class="overlay"></div>
+          <div class="content">
+            <i class="bi bi-geo-alt-fill fs-1 text-success mb-3"></i>
+            <h5 class="text-white">Prime Location</h5>
+            <p class="text-light">Located amidst Kerala’s scenic hills with easy access to attractions.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="pp-footer">
+    <div class="pp-footer-wrap container">
+      <div class="row g-0">
+        <!-- Left panel -->
+        <div class="col-lg-5" data-aos="fade-left">
+          <div class="pp-left h-100">
+            <div class="d-flex align-items-center gap-2">
+              <a class="navbar-brand" href="#">
+                <img src="images/pavizham-palace-logo.png" alt="pavizham-palace-logo"
+                  class="d-inline-block align-text-top logo-img" data-aos="fade-left">
+              </a>
+
+            </div>
+
+            <h3 data-aos="fade-left">
+              Trusted by smart people in more than
+              <br>140 countries
+            </h3>
+
+            <a href="contact.html" class="pp-cta" data-aos="fade-left">Reserve Now ....</a>
+          </div>
+        </div>
+
+        <!-- Right panel -->
+        <div class="col-lg-7">
+          <div class="pp-right h-100">
+            <div class="row">
+              <div class="col-6 col-md-4 mb-4">
+
+                <nav class="nav flex-column" data-aos="fade-right">
+                  <a class="nav-link" href="rooms.html" data-aos="fade-right">Rooms & Suites</a>
+                  <a class="nav-link" href="#menuTabs" data-aos="fade-right">Dining</a>
+                  <a class="nav-link" href="#facilities" data-aos="fade-right">Facilities</a>
+                  <a class="nav-link" href="about.html" data-aos="fade-right">About us</a>
+                  <a class="nav-link" href="contact.html" data-aos="fade-right">Contact</a>
+
+                </nav>
+              </div>
+              <div class="col-12 col-md-4 mb-4">
+
+                <nav class="nav flex-column">
+                  <a class="nav-link" href="#" data-aos="fade-right">Terms of Service</a>
+                  <a class="nav-link" href="#" data-aos="fade-right">Privacy Policy</a>
+
+                </nav>
+              </div>
+            </div>
+
+            <div class="pp-social mb-2 text-center" data-aos="zoom-in">
+              <a href="#"><i class="bi bi-linkedin" data-aos="zoom-in"></i></a>
+              <a href="#"><i class="bi bi-twitter" data-aos="zoom-in"></i></a>
+              <a href="#"><i class="bi bi-facebook" data-aos="zoom-in"></i></a>
+              <a href="#"><i class="bi bi-instagram" data-aos="zoom-in"></i></a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pp-copy">
+      ©2025 Pavizham Palace. All rights reserved.
+    </div>
+  </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/about.js"></script>
+    <!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800, // how long the animation takes
+    once: false    // set true if you want it to animate only once
+  });
+</script>
+
+</body>
+
+</html>

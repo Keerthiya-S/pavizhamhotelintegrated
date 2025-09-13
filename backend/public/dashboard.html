@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+    }
+    .sidebar {
+      width: 250px;
+      background: #343a40;
+      color: white;
+      flex-shrink: 0;
+    }
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background: #495057;
+    }
+    .content {
+      flex-grow: 1;
+      padding: 20px;
+      background: #f8f9fa;
+    }
+    .card img {
+      height: 150px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <h4 class="text-center py-3 border-bottom">Admin</h4>
+  <a href="#" id="availableRoomsLink" class="active">Available Rooms</a>
+  <a href="#" id="bookedRoomsLink">Booked Rooms</a>
+  <a href="#" id="bookingDetailsLink">Booking Details</a>
+</div>
+
+<!-- Main Content -->
+<div class="content">
+  <h2 id="pageTitle">Available Rooms</h2>
+  <div id="mainContent"></div>
+</div>
+
+<script>
+  const mainContent = document.getElementById("mainContent");
+  const pageTitle = document.getElementById("pageTitle");
+
+  // Room images
+  const roomImages = {
+    "Single": "single.jpg",
+    "Deluxe": "deluxe.jpg",
+    "Double": "double.jpg",
+    "Suite": "suite.jpg",
+    "Meeting Hall": "meetinghall.jpg",
+    "Cafeteria": "cafeteria.jpg"
+  };
+
+  // 🔹 Load Available Rooms
+  function loadAvailableRooms() {
+    pageTitle.innerText = "Available Rooms";
+    mainContent.innerHTML = `<div class="row" id="roomsRow"></div>`;
+
+    fetch("http://localhost:5000/rooms")
+      .then(res => res.json())
+      .then(data => {
+        const row = document.getElementById("roomsRow");
+        data.forEach(room => {
+          row.innerHTML += `
+            <div class="col-md-4 mb-4">
+              <div class="card shadow-sm">
+                <img src="images/${roomImages[room.room_type] || "default.jpg"}" class="card-img-top" alt="${room.room_type}">
+                <div class="card-body">
+                  <h5 class="card-title">${room.room_type}</h5>
+                  <p>Total: ${room.total_count}</p>
+                  <p>AC Available: ${room.ac_count}</p>
+                  <p>Non-AC Available: ${room.non_ac_count}</p>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+      });
+  }
+
+  // 🔹 Load Booked Rooms
+  function loadBookedRooms() {
+  pageTitle.innerText = "Booked Rooms";
+  mainContent.innerHTML = `<div class="row" id="bookedRow"></div>`;
+
+  fetch("http://localhost:5000/bookings")
+    .then(res => res.json())
+    .then(data => {
+      const row = document.getElementById("bookedRow");
+      if (data.length === 0) {
+        row.innerHTML = `<p>No bookings yet.</p>`;
+        return;
+      }
+      data.forEach(b => {
+        let roomInfo = "";
+        if (b.ac_rooms > 0) {
+          roomInfo += `<p><strong>AC Rooms:</strong> ${b.ac_rooms}</p>`;
+        }
+        if (b.non_ac_rooms > 0) {
+          roomInfo += `<p><strong>Non-AC Rooms:</strong> ${b.non_ac_rooms}</p>`;
+        }
+
+        row.innerHTML += `
+          <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+              <img src="images/${roomImages[b.room_type] || "default.jpg"}" class="card-img-top" alt="${b.room_type}">
+              <div class="card-body">
+                <h5 class="card-title">${b.room_type}</h5>
+                <p><strong>Name:</strong> ${b.name}</p>
+                <p><strong>Mobile:</strong> ${b.mobile}</p>
+                ${roomInfo}
+                <p><strong>Check-in:</strong> ${b.checkin}</p>
+                <p><strong>Check-out:</strong> ${b.checkout}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    });
+}
+
+  // 🔹 Load Booking Details
+  function loadBookingDetails() {
+    pageTitle.innerText = "Booking Details";
+    mainContent.innerHTML = `
+      <table class="table table-bordered table-striped shadow-sm">
+        <thead class="table-dark">
+          <tr>
+            <th>Room Type</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Check-in</th>
+            <th>Check-out</th>
+            <th>AC Rooms</th>
+            <th>Non-AC Rooms</th>
+          </tr>
+        </thead>
+        <tbody id="bookingList"></tbody>
+      </table>
+    `;
+
+    fetch("http://localhost:5000/bookings")
+      .then(res => res.json())
+      .then(data => {
+        const tbody = document.getElementById("bookingList");
+        tbody.innerHTML = "";
+        data.forEach(b => {
+          tbody.innerHTML += `
+            <tr>
+              <td>${b.room_type}</td>
+              <td>${b.name}</td>
+              <td>${b.email}</td>
+              <td>${b.mobile}</td>
+              <td>${b.checkin}</td>
+              <td>${b.checkout}</td>
+              <td>${b.ac_rooms}</td>
+              <td>${b.non_ac_rooms}</td>
+            </tr>
+          `;
+        });
+      });
+  }
+
+  // Sidebar navigation
+  document.getElementById("availableRoomsLink").addEventListener("click", function(e) {
+    e.preventDefault();
+    setActive(this);
+    loadAvailableRooms();
+  });
+
+  document.getElementById("bookedRoomsLink").addEventListener("click", function(e) {
+    e.preventDefault();
+    setActive(this);
+    loadBookedRooms();
+  });
+
+  document.getElementById("bookingDetailsLink").addEventListener("click", function(e) {
+    e.preventDefault();
+    setActive(this);
+    loadBookingDetails();
+  });
+
+  function setActive(el) {
+    document.querySelectorAll(".sidebar a").forEach(a => a.classList.remove("active"));
+    el.classList.add("active");
+  }
+
+  // Load default page
+  loadAvailableRooms();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pavizham Palace</title>
+  
+  <!-- Website Icon (Favicon) -->
+  <link rel="icon" type="image/png" href="images/pavizham-palace-logo.png">
+  <!-- Or use .ico file -->
+  <!-- <link rel="icon" type="image/x-icon" href="images/favicon.ico"> -->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <!-- ✅ Logo instead of text -->
+      <a class="navbar-brand" href="#">
+        <img src="images/colored-logo.png" alt="pavizham-palace-logo"
+          class="d-inline-block align-text-top logo-img">
+      </a>
+
+      <!-- Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Nav links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="rooms.html">Rooms</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+ <section class="hero-section">
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="videos/bg.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <div class="hero-content">
+    <h1 data-aos="fade-up">Welcome to Pavizham Palace</h1>
+    <p data-aos="fade-up" data-aos-delay="500">Your luxury escape in the hills</p>
+  </div>
+
+  <div class="booking-form" data-aos="fade-up" data-aos-delay="600">
+    <div class="form-box">
+      <label>Check In</label>
+      <input type="date">
+    </div>
+    <div class="form-box">
+      <label>Check Out</label>
+      <input type="date">
+    </div>
+    <div class="form-box">
+      <label>Guests</label>
+      <select>
+        <option>1 Guest</option>
+        <option>2 Guests</option>
+        <option>3 Guests</option>
+        <option>4+ Guests</option>
+      </select>
+    </div>
+    <button class="btn-availability">Check Availability</button>
+  </div>
+</section>
+
+
+
+  <!-- Welcome Section -->
+ <section id="welcome" class="py-5">
+  <div class="container" >
+    <div class="row align-items-center">
+
+      <!-- Left Content -->
+      <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-left">
+        <h2 class="fw-bold" data-aos="fade-left">Welcome to Your Perfect Stay</h2>
+        <p data-aos="fade-left" data-aos-delay="500">
+          Experience comfort, elegance, and world-class hospitality in the heart of the city.  
+          Whether you’re here for business or leisure, our luxurious rooms, fine dining,  
+          and personalized services are designed to make your stay truly unforgettable.
+        </p>
+        <div class="d-flex align-items-center gap-3">
+          <a href="rooms.html" class="btn btn-warning text-white px-4" data-aos="fade-left" data-aos-delay="600">Explore Rooms</a>
+        </div>
+      </div>
+
+      <!-- Right Content -->
+      <div class="col-md-6 position-relative text-center" data-aos="fade-right">
+        <!-- Main Image -->
+        <img src="images/welcomebig.jpg" class="img-fluid rounded shadow"
+          alt="Hotel Room" data-aos="fade-right">
+
+        <!-- Overlay Image -->
+        <img src="images/welcomesmall.jpg"
+          class="overlay-img rounded-circle shadow-lg" alt="Happy Guest" data-aos="fade-right">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Facilities Section -->
+  <section id="facilities" class="py-5 text-white">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Royal Facilities</h2>
+        <p class="text-light">Who are in extremely love with eco friendly system.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Facility Item -->
+        <div class="col-md-4" data-aos="flip-right">
+          <div class="facility-card p-4 h-100">
+            <div class="icon mb-3"><i class="fas fa-utensils"></i></div>
+            <h5 class="fw-bold">Restaurant</h5>
+            <p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.</p>
+          </div>
+        </div>
+
+        <!-- Facility Item -->
+        <div class="col-md-4" data-aos="flip-right">
+          <div class="facility-card p-4 h-100">
+            <div class="icon mb-3"><i class="fas fa-biking"></i></div>
+            <h5 class="fw-bold">Sports Club</h5>
+            <p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.</p>
+          </div>
+        </div>
+
+        <!-- Facility Item -->
+        <div class="col-md-4" data-aos="flip-right">
+          <div class="facility-card p-4 h-100">
+            <div class="icon mb-3"><i class="fas fa-swimmer"></i></div>
+            <h5 class="fw-bold">Swimming Pool</h5>
+            <p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.</p>
+          </div>
+        </div>
+
+        <!-- Facility Item -->
+        <div class="col-md-4" data-aos="flip-right">
+          <div class="facility-card p-4 h-100">
+            <div class="icon mb-3"><i class="fas fa-car"></i></div>
+            <h5 class="fw-bold">Rent a Car</h5>
+            <p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.</p>
+          </div>
+        </div>
+
+        <!-- Facility Item -->
+        <div class="col-md-4" data-aos="flip-right">
+          <div class="facility-card p-4 h-100">
+            <div class="icon mb-3"><i class="fas fa-dumbbell"></i></div>
+            <h5 class="fw-bold">Gymnesium</h5>
+            <p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.</p>
+          </div>
+        </div>
+
+        <!-- Facility Item -->
+        <div class="col-md-4" data-aos="flip-right">
+          <div class="facility-card p-4 h-100">
+            <div class="icon mb-3"><i class="fas fa-glass-martini-alt"></i></div>
+            <h5 class="fw-bold">Bar</h5>
+            <p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ====== Rooms Section ====== -->
+  <div class="container py-5">
+    <h2 class="text-center mb-4" style="color: #926268;" data-aos="fade-up">Our Rooms</h2>
+
+    <div id="roomCarousel" class="carousel slide" data-bs-ride="false">
+      <div class="carousel-inner">
+
+        <!-- First slide (3 cards) -->
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-md-4" data-aos="zoom-in">
+              <div class="room-card">
+                <img src="images/deluxe.jpg" alt="Deluxe Room">
+                <div class="room-info">
+                  <h5>Deluxe Room</h5>
+                  <p>From $150/night</p>
+                  <button class="btn btn-outline-light btn-sm">Book Room</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in">
+              <div class="room-card">
+                <img src="images/SingleRoom.jpg" alt="Single Room">
+                <div class="room-info">
+                  <h5>Single Room</h5>
+                  <p>From $100/night</p>
+                  <button class="btn btn-outline-light btn-sm">Book Room</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in">
+              <div class="room-card">
+                <img src="images/double.jpg" alt="Double Suite">
+                <div class="room-info">
+                  <h5>Double Suite</h5>
+                  <p>From $200/night</p>
+                  <button class="btn btn-outline-light btn-sm">Book Room</button>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <!-- Second slide (3 cards) -->
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-4" data-aos="zoom-in">
+              <div class="room-card">
+                <img src="images/LuxurySuite.jpg" alt="Luxury Suite">
+                <div class="room-info">
+                  <h5>Luxury Suite</h5>
+                  <p>From $250/night</p>
+                  <button class="btn btn-outline-light btn-sm">Book Room</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in">
+              <div class="room-card">
+                <img src="images/FamilyRoom.jpg" alt="Family Room">
+                <div class="room-info">
+                  <h5>Family Room</h5>
+                  <p>From $180/night</p>
+                  <button class="btn btn-outline-light btn-sm">Book Room</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in">
+              <div class="room-card">
+                <img src="images/PresidentialSuite.jpg" alt="Presidential Suite">
+                <div class="room-info">
+                  <h5>Presidential Suite</h5>
+                  <p>From $300/night</p>
+                  <button class="btn btn-outline-light btn-sm">Book Room</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-4" data-aos="zoom-in">
+              <div class="room-card">
+                <img src="images/HoneymoonSuite.jpg" alt="Honeymoon Suite">
+                <div class="room-info">
+                  <h5>Honeymoon Suite</h5>
+                  <p>From $270/night</p>
+                  <button class="btn btn-outline-light btn-sm">Book Room</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="room-card" data-aos="zoom-in">
+                <img src="images/ExecutiveRoom.jpg" alt="Executive Room">
+                <div class="room-info">
+                  <h5>Executive Room</h5>
+                  <p>From $220/night</p>
+                  <button class="btn btn-outline-light btn-sm">Book Room</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="room-card" data-aos="zoom-in">
+                <img src="images/GardenViewRoom.jpg" alt="Garden View Room">
+                <div class="room-info">
+                  <h5>Garden View Room</h5>
+                  <p>From $160/night</p>
+                  <button class="btn btn-outline-light btn-sm">Book Room</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#roomCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#roomCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </div>
+
+
+  <section class="menu-section">
+    <div class="overlay">
+      <div class="container text-center text-white py-5">
+        <h2 class="display-4 fw-bold" data-aos="fade-up">Our Restaurant Menu</h2>
+        <p class="mb-4" data-aos="fade-up">
+          Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+          there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the
+          Semantics, a large language ocean.
+        </p>
+
+        <!-- Tabs -->
+        <ul class="nav justify-content-center foodhead mb-5" id="menuTabs" role="tablist">
+          <li class="nav-item ">
+            <a class="nav-link active text-white fw-bold" id="mains-tab" data-bs-toggle="tab" href="#mains"
+              role="tab" data-aos="fade-right">Mains</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-warning fw-bold" id="desserts-tab" data-bs-toggle="tab" href="#desserts"
+              role="tab" data-aos="fade-up">Desserts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-warning fw-bold" id="drinks-tab" data-bs-toggle="tab" href="#drinks"
+              role="tab" data-aos="fade-left">Drinks</a>
+          </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content container text-start text-white">
+
+          <!-- Mains -->
+          <div class="tab-pane fade show active" id="mains" role="tabpanel">
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-right">Murgh Tikka Masala</h4>
+                <p data-aos="fade-down-right">Spiced chicken cooked in creamy tomato sauce.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-right">$35.00</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-left">Fish Moilee</h4>
+                <p data-aos="fade-down-left">Kerala-style fish curry with coconut milk.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-left" >$15.00</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-right">Safed Gosht</h4>
+                <p data-aos="fade-down-right">Lamb cooked in rich yogurt and cashew gravy.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-right">$28.00</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-left">Paneer Butter Masala</h4>
+                <p data-aos="fade-down-left">Soft paneer cubes in buttery tomato sauce.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-left">$20.00</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-right">French Toast Combo</h4>
+                <p data-aos="fade-down-right">Served with maple syrup, butter, and fresh fruits.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-right">$8.35</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-left">Veggie Omelet</h4>
+                <p data-aos="fade-down-left">Loaded with onions, peppers, tomatoes, and herbs.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-left">$22.00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Desserts -->
+          <div class="tab-pane fade" id="desserts" role="tabpanel">
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-right">Chocolate Lava Cake</h4>
+                <p data-aos="fade-down-right">Rich molten chocolate cake with vanilla ice cream.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-right">$10.00</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-left">Cheesecake</h4>
+                <p data-aos="fade-down-left">Classic creamy cheesecake with berry topping.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-left">$12.00</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-right">Tiramisu</h4>
+                <p data-aos="fade-down-right">Italian layered dessert with coffee and mascarpone.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-right">$14.00</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-left">Ice Cream Sundae</h4>
+                <p data-aos="fade-down-left">Three scoops topped with chocolate and nuts.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-left">$9.50</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-right">Gulab Jamun</h4>
+                <p data-aos="fade-down-right">Soft fried dumplings soaked in sugar syrup.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-right">$7.00</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-left">Fruit Tart</h4>
+                <p data-aos="fade-down-left">Fresh seasonal fruits on buttery pastry cream.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-left">$11.00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Drinks -->
+          <div class="tab-pane fade" id="drinks" role="tabpanel">
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-right">Mojito</h4>
+                <p data-aos="fade-down-right">Refreshing mint and lime cocktail.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-right">$8.00</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-left">Orange Juice</h4>
+                <p data-aos="fade-down-left">Freshly squeezed orange juice.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-left">$5.00</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-right">Cappuccino</h4>
+                <p data-aos="fade-down-right">Espresso with steamed milk and foam.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-right">$6.00</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-left">Green Tea</h4>
+                <p data-aos="fade-down-left">Light and refreshing antioxidant-rich tea.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-left">$4.00</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-right">Red Wine</h4>
+                <p data-aos="fade-down-right">Glass of premium Cabernet Sauvignon.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-right">$15.00</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                <h4 data-aos="fade-down-left">Mocktail</h4>
+                <p data-aos="fade-down-left">Non-alcoholic fruit punch mix.</p>
+                <span class="text-warning fw-bold" data-aos="fade-down-left">$7.50</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="pp-footer">
+    <div class="pp-footer-wrap container">
+      <div class="row g-0">
+        <!-- Left panel -->
+        <div class="col-lg-5" data-aos="fade-left">
+          <div class="pp-left h-100">
+            <div class="d-flex align-items-center gap-2">
+              <a class="navbar-brand" href="#">
+                <img src="images/pavizham-palace-logo.png" alt="pavizham-palace-logo"
+                  class="d-inline-block align-text-top logo-img" data-aos="fade-left">
+              </a>
+
+            </div>
+
+            <h3 data-aos="fade-left">
+              Trusted by smart people in more than
+              <br>140 countries
+            </h3>
+
+            <a href="contact.html" class="pp-cta" data-aos="fade-left">Reserve Now ....</a>
+          </div>
+        </div>
+
+        <!-- Right panel -->
+        <div class="col-lg-7">
+          <div class="pp-right h-100">
+            <div class="row">
+              <div class="col-6 col-md-4 mb-4">
+
+                <nav class="nav flex-column" data-aos="fade-right">
+                  <a class="nav-link" href="rooms.html" data-aos="fade-right">Rooms & Suites</a>
+                  <a class="nav-link" href="#menuTabs" data-aos="fade-right">Dining</a>
+                  <a class="nav-link" href="#facilities" data-aos="fade-right">Facilities</a>
+                  <a class="nav-link" href="about.html" data-aos="fade-right">About us</a>
+                  <a class="nav-link" href="contact.html" data-aos="fade-right">Contact</a>
+
+                </nav>
+              </div>
+              <div class="col-12 col-md-4 mb-4">
+
+                <nav class="nav flex-column">
+                  <a class="nav-link" href="#" data-aos="fade-right">Terms of Service</a>
+                  <a class="nav-link" href="#" data-aos="fade-right">Privacy Policy</a>
+
+                </nav>
+              </div>
+            </div>
+
+            <div class="pp-social mb-2 text-center" data-aos="zoom-in">
+              <a href="#"><i class="bi bi-linkedin" data-aos="zoom-in"></i></a>
+              <a href="#"><i class="bi bi-twitter" data-aos="zoom-in"></i></a>
+              <a href="#"><i class="bi bi-facebook" data-aos="zoom-in"></i></a>
+              <a href="#"><i class="bi bi-instagram" data-aos="zoom-in"></i></a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pp-copy">
+      ©2025 Pavizham Palace. All rights reserved.
+    </div>
+  </footer>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/index.js"></script>
+  <!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800, // how long the animation takes
+    once: false    // set true if you want it to animate only once
+  });
+</script>
+</body>
+
+</html>
