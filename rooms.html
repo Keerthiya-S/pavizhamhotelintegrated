@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pavizham Palace - Rooms</title>
+    <link rel="icon" type="image/png" href="images/pavizham-palace-logo.png">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/rooms.css">
+    <!-- AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+    .card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .card img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .price-tag {
+      font-size: 1rem;
+      font-weight: bold;
+      color: green;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      background: linear-gradient(135deg, #926268, #b58a86);
+      border: none;
+      border-radius: 50px;
+    }
+
+    .btn-outline-secondary {
+      border-radius: 50px;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #d6979e, #b58a86);
+      border: none;
+    }
+
+    .btn-pair {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .btn-pair .btn {
+      flex: 1;
+    }
+  </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <!-- ✅ Logo instead of text -->
+            <a class="navbar-brand" href="#">
+                <img src="images/colored-logo.png" alt="pavizham-palace-logo"
+                    class="d-inline-block align-text-top logo-img">
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Nav links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="rooms.html">Rooms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 data-aos="fade-up">Rooms</h1>
+            <h2 data-aos="fade-up">Experience luxury & comfort in the heart of Kerala</h2>
+        </div>
+        <div class="booking-form" data-aos="fade-up" data-aos-delay="600">
+            <div class="form-box" data-aos="fade-up">
+                <label>Check In</label>
+                <input type="date">
+            </div>
+            <div class="form-box" data-aos="fade-up">
+                <label>Check Out</label>
+                <input type="date">
+            </div>
+            <div class="form-box" data-aos="fade-up">
+                <label>Guests</label>
+                <select>
+                    <option>1 Guest</option>
+                    <option>2 Guests</option>
+                    <option>3 Guests</option>
+                    <option>4+ Guests</option>
+                </select>
+            </div>
+            <button class="btn-availability" data-aos="fade-up">Check Availability</button>
+        </div>
+    </section>
+    <div class="container py-5">
+    <h1 class="text-center mb-4" style="color: #926268;">Available Rooms</h1>
+    <div id="rooms" class="row"></div>
+  </div>
+
+  <!-- Bootstrap Modal -->
+  <div class="modal fade" id="roomModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="roomTitle"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img id="roomImage" class="img-fluid rounded mb-3" alt="">
+          <p id="roomPrice" class="price-tag"></p>
+          <p id="roomAvailability"></p>
+          <p id="roomDescription"></p>
+          <!-- New Services Section -->
+          <h6>Services & Amenities:</h6>
+          <ul id="roomServices" class="list-unstyled"></ul>
+
+          <h6>Food Services:</h6>
+          <ul id="roomFoods" class="list-unstyled"></ul>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-primary" id="bookNowBtn">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <section id="bannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+        <div class="carousel-inner">
+
+            <!-- Slide 1: Pool -->
+            <div class="carousel-item active">
+                <div class="banner-overlay">
+                    <img src="images/pool.jpg" class="d-block w-100 banner-img" alt="Swimming Pool">
+                </div>
+                <div class="carousel-caption">
+                    <h2 class="fw-bold">Relax by the Pool</h2>
+                    <p>Unwind in our luxurious swimming pool with scenic views.</p>
+                </div>
+            </div>
+
+            <!-- Slide 2: Gym -->
+            <div class="carousel-item">
+                <div class="banner-overlay">
+                    <img src="images/gym.jpg" class="d-block w-100 banner-img" alt="Hotel Gym">
+                </div>
+                <div class="carousel-caption">
+                    <h2 class="fw-bold">Stay Fit & Strong</h2>
+                    <p>Enjoy our modern gym equipped for all your fitness needs.</p>
+                </div>
+            </div>
+
+            <!-- Slide 3: Restaurant -->
+            <div class="carousel-item">
+                <div class="banner-overlay">
+                    <img src="images/food.jpg" class="d-block w-100 banner-img" alt="Restaurant Food">
+                </div>
+                <div class="carousel-caption">
+                    <h2 class="fw-bold">Taste the Flavors</h2>
+                    <p>Delight in authentic dishes crafted by top chefs.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- Great Offers Section -->
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <!-- Section Title -->
+            <div class="row justify-content-center">
+                <div class="col-md-7 text-center heading-section">
+                    <h2 class="mb-4" data-aos="fade-up">Great Offers</h2>
+                    <p data-aos="fade-up">
+                        Far far away, behind the word mountains, far from the countries
+                        Vokalia and Consonantia, there live the blind texts. Separated they
+                        live in Bookmarksgrove right at the coast of the Semantics, a large
+                        language ocean.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Room 1 -->
+            <div class="row d-flex mb-5">
+                <div class="col-md-6 d-flex">
+                    <div class="room-img" style="background-image: url('images/FamilyRoom.jpg');" data-aos="fade-right">
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="room-text p-4">
+                        <h2 data-aos="fade-left">
+                            <span class="price">$199</span> <small>/ per night</small>
+                        </h2>
+                        <h3 class="room-title" data-aos="fade-left">Family Room</h3>
+                        <p data-aos="fade-left">
+                            Far far away, behind the word mountains, far from the countries
+                            Vokalia and Consonantia, there live the blind texts. Separated they
+                            live in Bookmarksgrove right at the coast of the Semantics.
+                        </p>
+                        <p><a href="#booking" class="btn-custom" data-aos="fade-left">Book Now</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Room 2 -->
+            <div class="row d-flex mb-5">
+                <div class="col-md-6 order-md-2 d-flex">
+                    <div class="room-img" style="background-image: url('images/PresidentialSuite.jpg');"
+                        data-aos="fade-left">
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="room-text p-4">
+                        <h2 data-aos="fade-right">
+                            <span class="price">$299</span> <small>/ per night</small>
+                        </h2>
+                        <h3 class="room-title" data-aos="fade-right">Presidential Room</h3>
+                        <p data-aos="fade-right">
+                            Far far away, behind the word mountains, far from the countries
+                            Vokalia and Consonantia, there live the blind texts. Separated they
+                            live in Bookmarksgrove right at the coast of the Semantics.
+                        </p>
+                        <p><a href="#booking" class="btn-custom" data-aos="fade-right">Book Now</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="pp-footer">
+        <div class="pp-footer-wrap container">
+            <div class="row g-0">
+                <!-- Left panel -->
+                <div class="col-lg-5" data-aos="fade-left">
+                    <div class="pp-left h-100">
+                        <div class="d-flex align-items-center gap-2">
+                            <a class="navbar-brand" href="#">
+                                <img src="images/pavizham-palace-logo.png" alt="pavizham-palace-logo"
+                                    class="d-inline-block align-text-top logo-img" data-aos="fade-left">
+                            </a>
+
+                        </div>
+
+                        <h3 data-aos="fade-left">
+                            Trusted by smart people in more than
+                            <br>140 countries
+                        </h3>
+
+                        <a href="#booking" class="pp-cta" data-aos="fade-left">Reserve Now ....</a>
+                    </div>
+                </div>
+
+                <!-- Right panel -->
+                <div class="col-lg-7">
+                    <div class="pp-right h-100">
+                        <div class="row">
+                            <div class="col-6 col-md-4 mb-4">
+
+                                <nav class="nav flex-column" data-aos="fade-right">
+                                    <a class="nav-link" href="rooms.html" data-aos="fade-right">Rooms & Suites</a>
+                                    <a class="nav-link" href="#menuTabs" data-aos="fade-right">Dining</a>
+                                    <a class="nav-link" href="#facilities" data-aos="fade-right">Facilities</a>
+                                    <a class="nav-link" href="about.html" data-aos="fade-right">About us</a>
+                                    <a class="nav-link" href="contact.html" data-aos="fade-right">Contact</a>
+
+                                </nav>
+                            </div>
+                            <div class="col-12 col-md-4 mb-4">
+
+                                <nav class="nav flex-column">
+                                    <a class="nav-link" href="#" data-aos="fade-right">Terms of Service</a>
+                                    <a class="nav-link" href="#" data-aos="fade-right">Privacy Policy</a>
+
+                                </nav>
+                            </div>
+                        </div>
+
+                        <div class="pp-social mb-2 text-center" data-aos="zoom-in">
+                            <a href="#"><i class="bi bi-linkedin" data-aos="zoom-in"></i></a>
+                            <a href="#"><i class="bi bi-twitter" data-aos="zoom-in"></i></a>
+                            <a href="#"><i class="bi bi-facebook" data-aos="zoom-in"></i></a>
+                            <a href="#"><i class="bi bi-instagram" data-aos="zoom-in"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pp-copy">
+            ©2025 Pavizham Palace. All rights reserved.
+        </div>
+    </footer>
+
+   <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/rooms.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800, // how long the animation takes
+      once: false    // set true if you want it to animate only once
+    });
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Room type → image mapping
+    const roomImages = {
+      "Single": "single.jpg",
+      "Deluxe": "deluxe.jpg",
+      "Double": "double.jpg",
+      "Suite": "suite.jpg",
+      "Meeting Hall": "meetinghall.jpg",
+      "Cafeteria": "cafeteria.jpg"
+    };
+
+    // Room type → description mapping
+    const roomDescriptions = {
+      "Single": "Perfect for solo travelers with all basic amenities.",
+      "Deluxe": "Spacious room with premium comfort and facilities.",
+      "Double": "Comfortable for two guests, with a cozy ambiance.",
+      "Suite": "Luxury suite with living area, ideal for families.",
+      "Meeting Hall": "Spacious hall suitable for meetings & events.",
+      "Cafeteria": "Cozy cafeteria for dining and refreshments."
+    };
+    const roomFoods = {
+      "Single": [
+        "🍳 Breakfast: Free",
+        "🍲 Lunch: Paid",
+        "🍛 Dinner: Paid",
+        "🍵 Tea/Coffee: Free"
+      ],
+      "Deluxe": [
+        "🍳 Breakfast: Free",
+        "🍲 Lunch: Paid",
+        "🍛 Dinner: Paid",
+        "🍵 Tea/Coffee: Free"
+      ],
+      "Double": [
+        "🍳 Breakfast: Free",
+        "🍲 Lunch: Paid",
+        "🍛 Dinner: Paid",
+        "🍵 Evening Snacks: Paid"
+      ],
+      "Suite": [
+        "🍳 Breakfast: Free",
+        "🍲 Lunch: Paid",
+        "🍛 Dinner: Paid",
+        "🍵 Tea/Coffee: Free",
+        "🍰 Desserts: Paid"
+      ],
+      "Meeting Hall": [
+        "☕ Tea/Coffee: Paid",
+        "🥪 Snacks: Paid"
+      ],
+      "Cafeteria": [
+        "🍽️ All meals available (Paid)"
+      ]
+    };
+
+    // Room type → other services mapping
+    const roomServices = {
+      "Single": [
+        "🛜 Free WiFi",
+        "📺 TV",
+        "🛏️ Housekeeping",
+        "📞 Room Service"
+      ],
+      "Deluxe": [
+        "🛜 Free WiFi",
+        "📺 Smart TV",
+        "🛁 Hot Water / Shower",
+        "🧊 Mini Fridge",
+        "📞 Room Service"
+      ],
+      "Double": [
+        "🛜 Free WiFi",
+        "📺 TV",
+        "🅿️ Parking Facility",
+        "🛏️ Housekeeping"
+      ],
+      "Suite": [
+        "🛜 Free WiFi",
+        "📺 Smart TV",
+        "🛋️ Living Area",
+        "🧊 Mini Fridge",
+        "🅿️ Parking",
+        "📞 Room Service"
+      ],
+      "Meeting Hall": [
+        "🖥️ Projector",
+        "🛜 High-Speed WiFi",
+        "🎤 Sound System",
+        "🪑 Comfortable Seating",
+        "📝 Whiteboard"
+      ],
+      "Cafeteria": [
+        "🛜 Free WiFi",
+        "☕ Tea / Coffee",
+        "🥪 Snacks",
+        "🍽️ Dining Area"
+      ]
+    };
+
+    // Fetch rooms from backend
+    fetch("http://localhost:5000/rooms")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("rooms");
+        container.innerHTML = "";
+        data.forEach(room => {
+          const imgSrc = `img/${roomImages[room.room_type] || "default.jpg"}`;
+
+          container.innerHTML += `
+            <div class="col-md-4 mb-4 d-flex">
+              <div class="card shadow-sm w-100">
+                <img src="${imgSrc}" class="card-img-top" alt="${room.room_type}">
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">${room.room_type}</h5>
+
+                  <div class="info-row">
+                    <span>Total: ${room.total_count || 0}</span>
+                    <span>Booked: ${room.total_count - (room.ac_count + room.non_ac_count) || 0}</span>
+                  </div>
+
+                  <div class="info-row">
+                    <span>AC: ${room.ac_count}</span>
+                    <span>Non-AC: ${room.non_ac_count}</span>
+                  </div>
+
+                  
+
+                  <div class="mt-auto btn-pair">
+                    <button class="btn btn-outline-secondary" 
+                      onclick="viewDetails(${room.id}, '${room.room_type}', ${room.ac_count || 0}, ${room.non_ac_count || 0}, ${room.ac_price || 0}, ${room.non_ac_price || 0})">
+                      View Details
+                    </button>
+
+                    <button class="btn btn-primary" 
+                      ${(room.ac_count + room.non_ac_count) === 0 ? "disabled" : ""} 
+                      onclick="openForm(${room.id}, '${room.room_type}', ${room.ac_count || 0}, ${room.non_ac_count || 0}, ${room.ac_price || 0}, ${room.non_ac_price || 0})">
+                      Book Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+        });
+      });
+
+    // Save selected room in localStorage
+    function openForm(roomId, roomType, acCount, nonAcCount, acPrice, nonAcPrice) {
+      localStorage.setItem("selectedRoom", JSON.stringify({
+        id: roomId,
+        type: roomType,
+        ac_count: acCount,
+        non_ac_count: nonAcCount,
+        ac_price: acPrice,
+        non_ac_price: nonAcPrice
+      }));
+
+      window.location.href = "booking.html";
+    }
+
+    // Show details in Bootstrap modal
+    function viewDetails(roomId, roomType, acCount, nonAcCount, acPrice, nonAcPrice) {
+      const modal = new bootstrap.Modal(document.getElementById("roomModal"));
+
+      document.getElementById("roomTitle").innerText = roomType;
+      document.getElementById("roomImage").src = `img/${roomImages[roomType] || "default.jpg"}`;
+
+      // Show AC & Non-AC prices
+      let priceText = [];
+      if (acPrice > 0) priceText.push(`AC: ₹${acPrice} / night`);
+      if (nonAcPrice > 0) priceText.push(`Non-AC: ₹${nonAcPrice} / night`);
+      document.getElementById("roomPrice").innerText = priceText.join(" | ");
+
+      // Show availability
+      document.getElementById("roomAvailability").innerText = `AC Available: ${acCount} | Non-AC Available: ${nonAcCount}`;
+
+      // Set description
+      document.getElementById("roomDescription").innerText = roomDescriptions[roomType] || "";
+      // Services
+      const servicesList = document.getElementById("roomServices");
+      servicesList.innerHTML = "";
+      (roomServices[roomType] || []).forEach(service => {
+        servicesList.innerHTML += `<li>✅ ${service}</li>`;
+      });
+
+      // Foods
+      const foodList = document.getElementById("roomFoods");
+      foodList.innerHTML = "";
+      (roomFoods[roomType] || []).forEach(food => {
+        let color = food.includes("Free") ? "green" : "red";
+        foodList.innerHTML += `<li style="color:${color}">${food}</li>`;
+      });
+
+      // Book button inside modal
+      document.getElementById("bookNowBtn").onclick = function () {
+        openForm(roomId, roomType, acCount, nonAcCount, acPrice, nonAcPrice);
+        modal.hide();
+      };
+
+      modal.show();
+    }
+  </script>
+</body>
+
+</html>

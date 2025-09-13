@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Room Booking</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    body {
+      background: #f8f9fa;
+    }
+    .booking-card {
+      max-width: 600px;
+      margin: auto;
+      border-radius: 15px;
+      border: none;
+    }
+    .btn-gradient {
+      background: linear-gradient(135deg, #926268, #b58a86);
+      border: none;
+      border-radius: 50px;
+      transition: 0.3s ease;
+    }
+    .btn-gradient:hover {
+      background: linear-gradient(135deg, #d6979e, #b58a86);
+    }
+    .btn-outline-gradient {
+      border: 2px solid #926268;
+      color: #926268;
+      border-radius: 50px;
+      transition: 0.3s ease;
+    }
+    .btn-outline-gradient:hover {
+      background: linear-gradient(135deg, #926268, #b58a86);
+      color: white;
+    }
+    h2 {
+      color: #926268;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container py-5">
+  <h2>Book Your Room</h2>
+
+  <form id="bookingForm" class="card p-4 shadow-sm booking-card">
+    <div class="mb-3">
+      <label class="form-label">Room Type</label>
+      <input type="text" id="roomType" class="form-control" readonly>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" id="name" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" id="email" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Mobile</label>
+      <input type="text" id="mobile" class="form-control" required>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Check-in</label>
+        <input type="date" id="checkin" class="form-control" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Check-out</label>
+        <input type="date" id="checkout" class="form-control" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">AC Rooms (Available: <span id="acAvailable">0</span>)</label>
+        <input type="number" id="ac_rooms" class="form-control" min="0" value="0">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Non-AC Rooms (Available: <span id="nonAcAvailable">0</span>)</label>
+        <input type="number" id="non_ac_rooms" class="form-control" min="0" value="0">
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Total Amount</label>
+      <p id="totalAmount" class="fw-bold text-success">₹ 0</p>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <button type="button" class="btn btn-outline-gradient w-50 me-2" onclick="window.location.href='rooms.html'">Cancel</button>
+      <button type="submit" class="btn btn-gradient w-50">Confirm Booking</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  // Get today's date in YYYY-MM-DD format
+  const today = new Date().toISOString().split("T")[0];
+  document.getElementById("checkin").setAttribute("min", today);
+  document.getElementById("checkout").setAttribute("min", today);
+
+  document.getElementById("checkin").addEventListener("change", function () {
+    document.getElementById("checkout").setAttribute("min", this.value);
+  });
+
+  // Load selected room
+  const selectedRoom = JSON.parse(localStorage.getItem("selectedRoom"));
+  if (!selectedRoom) {
+    Swal.fire({
+      title: 'Error!',
+      text: 'No room selected. Please go back and choose a room.',
+      icon: 'error',
+      confirmButtonText: 'OK'
+    }).then(() => window.location.href = "index.html");
+  } else {
+    document.getElementById("roomType").value = selectedRoom.type;
+    document.getElementById("acAvailable").innerText = selectedRoom.ac_count;
+    document.getElementById("nonAcAvailable").innerText = selectedRoom.non_ac_count;
+    document.getElementById("ac_rooms").setAttribute("max", selectedRoom.ac_count);
+    document.getElementById("non_ac_rooms").setAttribute("max", selectedRoom.non_ac_count);
+  }
+
+  // Calculate amount
+  function calculateAmount() {
+    const checkin = new Date(document.getElementById("checkin").value);
+    const checkout = new Date(document.getElementById("checkout").value);
+    const acRooms = parseInt(document.getElementById("ac_rooms").value) || 0;
+    const nonAcRooms = parseInt(document.getElementById("non_ac_rooms").value) || 0;
+
+    if (checkin && checkout && (acRooms > 0 || nonAcRooms > 0)) {
+      const nights = (checkout - checkin) / (1000 * 60 * 60 * 24);
+      if (nights > 0) {
+        const acPrice = selectedRoom.ac_price || 0;
+        const nonAcPrice = selectedRoom.non_ac_price || 0;
+        const total = (acRooms * acPrice + nonAcRooms * nonAcPrice) * nights;
+        document.getElementById("totalAmount").innerText = `₹ ${total}`;
+        return total;
+      } else {
+        document.getElementById("totalAmount").innerText = "Invalid dates";
+        return 0;
+      }
+    } else {
+      document.getElementById("totalAmount").innerText = "₹ 0";
+      return 0;
+    }
+  }
+
+  ["checkin","checkout","ac_rooms","non_ac_rooms"].forEach(id => {
+    document.getElementById(id).addEventListener("input", calculateAmount);
+  });
+
+  // Booking submit
+  document.getElementById("bookingForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const totalAmount = calculateAmount();
+    if (totalAmount <= 0) {
+      Swal.fire("Error!", "Please select valid dates and at least 1 room.", "error");
+      return;
+    }
+
+    const booking = {
+      room_id: selectedRoom.id,
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      mobile: document.getElementById("mobile").value,
+      checkin: document.getElementById("checkin").value,
+      checkout: document.getElementById("checkout").value,
+      ac_rooms: parseInt(document.getElementById("ac_rooms").value) || 0,
+      non_ac_rooms: parseInt(document.getElementById("non_ac_rooms").value) || 0,
+      total_amount: totalAmount
+    };
+
+    fetch("http://localhost:5000/book", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(booking)
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.error || data.message?.includes("Not enough")) {
+        Swal.fire("Error!", data.message || "Booking failed", "error");
+      } else {
+        Swal.fire({
+          title: 'Booking Confirmed!',
+          text: `Your total amount is ₹${totalAmount}`,
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          window.location.href = "index.html";
+        });
+      }
+    })
+    .catch(err => {
+      Swal.fire("Error!", "Something went wrong. Please try again.", "error");
+      console.error(err);
+    });
+  });
+</script>
+
+</body>
+</html>

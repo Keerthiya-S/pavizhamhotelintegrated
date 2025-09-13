@@ -1,0 +1,426 @@
+/* Navbar */
+.navbar {
+    transition: background-color 0.3s ease;
+    padding: 10px 20px;
+    background: transparent;
+}
+html, body {
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+.navbar.scrolled {
+     background: linear-gradient(135deg, #926268, #b58a86);
+    transition: background 0.3s ease;
+}
+.navbar.scrolled .nav-link{
+    color: white !important;
+}
+
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+
+
+}
+
+.nav-link {
+    color: white !important;
+    font-weight: 500;
+    font-size: 1rem !important;
+    margin: 0 10px;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    background: url("../images/contactbanner.jpg") no-repeat center center/cover;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    animation: zoomBackground 10s ease-in-out infinite alternate;
+}
+@keyframes zoomBackground {
+  0% {
+    background-size: 100% auto;  /* normal size */
+  }
+  100% {
+    background-size: 120% auto;  /* zoomed in */
+  }
+}
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 40px;
+}
+
+.hero-content h1 {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+/* Navbar logo */
+.logo-img {
+    max-height: 50px;
+    /* control height */
+    width: auto;
+    /* keep proportions */
+}
+/* Booking Form Styling */
+#bookingForm {
+  max-width: 420px;        /* keep form small */
+  margin: auto;
+  background: rgba(255, 255, 255, 0.9); /* soft transparency */
+  border-radius: 20px;
+  padding: 25px 30px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+#bookingForm:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Labels */
+#bookingForm label {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* Inputs */
+#bookingForm .form-control,
+#bookingForm .form-select {
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  border: 1px solid #ddd;
+  transition: 0.2s;
+}
+
+#bookingForm .form-control:focus,
+#bookingForm .form-select:focus {
+  border-color: #926268;
+  box-shadow: 0 0 6px rgba(146, 98, 104, 0.3);
+}
+
+/* Button */
+#bookingForm button {
+  background: #926268;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 30px;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+#bookingForm button:hover {
+  background: #7a5056;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Response message */
+#responseMessage {
+  font-size: 0.95rem;
+  padding: 8px 12px;
+  border-radius: 12px;
+  display: inline-block;
+}
+.hover-img {
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+.hover-img:hover {
+  transform: scale(1.05);          /* slight zoom */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* stronger shadow */
+  filter: brightness(1.1);         /* brighten */
+}
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+   background: white;
+    border-radius: 8px;
+  }
+  .navbar-collapse .nav-link {
+    color: black !important; /* keep text white */
+  }
+}
+@media (max-width: 767px) {
+    .logo-img {
+        max-height: 40px;
+        /* slightly smaller on mobile */
+    }
+}
+.contact-info-map {
+  background-image: url('../images/contact-bg.jpg'); /* replace with your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  color: #fff;
+}
+
+/* Optional: add overlay for readability */
+.contact-info-map::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* dark overlay */
+  z-index: 1;
+}
+
+.contact-info-map .container,
+.contact-info-map .row {
+  position: relative;
+  z-index: 2; /* keep content above overlay */
+}
+/* Glassmorphism contact form */
+#contactForm {
+  background: rgba(255, 255, 255, 0.15) !important; /* make semi-transparent */
+  backdrop-filter: blur(8px);            
+  -webkit-backdrop-filter: blur(8px);    /* safari support */
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* Input fields transparent */
+#contactForm input,
+#contactForm textarea {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#contactForm input:focus,
+#contactForm textarea:focus {
+  background: rgba(255, 255, 255, 0.3);
+  outline: none;
+  box-shadow: 0 0 5px #926268;
+}
+
+#contactForm input::placeholder,
+#contactForm textarea::placeholder {
+  color: #ddd;
+}
+
+/* Button style */
+#contactForm button {
+  background: #926268;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  padding: 10px 20px;
+  transition: 0.3s;
+}
+
+#contactForm button:hover {
+  background: #b37a7e;
+}
+
+/* ✅ Mobile adjustments */
+@media (max-width: 767px) {
+    .hero-section {
+        justify-content: center;
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+    }
+}
+/* footer */
+
+.pp-footer {
+    background: url("../images/banner.jpg") no-repeat center center fixed;
+    background-size: cover;
+    padding: 60px 0;
+    /* space above & below content */
+    position: relative;
+}
+
+.pp-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    /* transparent overlay */
+}
+
+.pp-footer-wrap {
+    position: relative;
+    /* keep content above overlay */
+    z-index: 2;
+    color: #fff;
+}
+
+/* Left panel with transparent bg */
+/* Left panel with more transparent bg */
+.pp-left {
+    background: rgba(207, 226, 215, 0.5);
+    color: #111;
+    /* black text */
+    padding: 56px 48px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Right panel with more transparent bg */
+.pp-right {
+    background: rgba(18, 26, 34, 0.6);
+    /* was 0.9 → now lighter */
+    color: #e7eef3 !important;
+    padding: 48px;
+}
+
+.pp-right h6,
+.pp-right .nav-link,
+.pp-note,
+.pp-copy {
+    color: #fff !important;
+    /* force all text to white */
+}
+
+.pp-right .nav-link:hover {
+    color: rgba(207, 226, 215, 0.5) !important;
+}
+
+.pp-left h3 {
+    font-size: 38px;
+    line-height: 1.25;
+    font-weight: 600;
+    margin: 24px 0 28px;
+    letter-spacing: .2px;
+}
+
+.pp-left h3,
+.pp-left .pp-cta {
+    color: white;
+    /* dark for heading & button */
+}
+
+.pp-left .pp-cta {
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+}
+
+.pp-left .pp-cta:hover {
+    border-color: #ffefef;
+    color: #ffffff;
+}
+
+.pp-cta {
+    display: inline-block;
+    border: 1.5px solid rgba(255, 255, 255, .35);
+    color: #e7eef3;
+    padding: 10px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.pp-cta:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+.pp-right h6 {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 14px;
+}
+
+.pp-right .nav-link {
+    padding: 6px 0;
+    color: white;
+    opacity: .9;
+    font-size: 15px;
+}
+
+.pp-right .nav-link:hover {
+    color: #0b5ed7;
+    opacity: 1;
+}
+
+.pp-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #926268, #b58a86);
+    color: white;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.pp-social a:hover {
+    background: transparent;
+    color: #926268;
+}
+
+
+.pp-copy {
+    font-size: 13px;
+    color: #1c2a2a;
+    opacity: .9;
+    margin-top: 18px;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .pp-left {
+        padding: 40px 28px;
+    }
+
+    .pp-right {
+        padding: 32px 24px;
+    }
+
+    .pp-left h3 {
+        font-size: 32px;
+    }
+}
